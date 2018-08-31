@@ -43,6 +43,9 @@ public class LinkedList {
     public void printList() {
         for(Node iter=this.head; iter != null; iter=iter.next)
             System.out.print(iter.data + " ");
+        
+        System.out.println("");
+        
     }
 
     public void insertNodes(int num){
