@@ -7,7 +7,7 @@ public class RemoveDups extends LinkedList{
 
 	/* removeDuplicate node using HashMap class*/
     public void removeDuplicate() {
-    	Map<Integer, Boolean> nodeMap = new HashMap<Integer, Boolean>();
+    	Map<Integer, Boolean> nodeMap = new HashMap<>();
     	
     	Node prev, cur;
     	
@@ -47,7 +47,7 @@ public class RemoveDups extends LinkedList{
     }
     
     /* removeDuplicate node without using extra data structure */
-    public void removeDuplicateInplace() {
+    private void removeDuplicateInplace() {
     	
     	for (Node pivot = this.head; pivot != null; pivot = pivot.next) {
     		Node prev = pivot;
@@ -66,8 +66,7 @@ public class RemoveDups extends LinkedList{
     }
 
     public static void main(String args[]){
-    	RemoveDups list;
-        list = new RemoveDups();
+		RemoveDups list = new RemoveDups();
         list.insertNodes(20);
         list.printList();
         
