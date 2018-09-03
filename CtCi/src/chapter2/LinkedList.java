@@ -3,14 +3,15 @@ package chapter2;
 import java.util.Random;
 
 // assume that data stored in Node is of type int - how about generic type?
-class Node {
+// moved to the Node.java and made it public.
+/*class Node {
     int data;
     Node next;
 
     public Node(int n){
         this.data = n;
     }
-}
+}*/
 
 
 public class LinkedList {
@@ -19,10 +20,18 @@ public class LinkedList {
     public LinkedList() {
 
     }
-
-    public LinkedList(Node node) {
+    
+	public LinkedList(Node node) {
         this.head = node;
     }
+
+    public Node getHead() {
+		return head;
+	}
+
+	public void setHead(Node head) {
+		this.head = head;
+	}
 
     public void appendToTail(int val) {
         Node lastNode = this.head;
