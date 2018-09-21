@@ -48,6 +48,14 @@ public class LinkedList {
         lastNode.next = new Node(val);
         return;
     }
+    
+    public void appendToHead(int val) {
+        Node headBak = this.head;
+        this.head = new Node(val);
+        this.head.next = headBak;
+        
+        return;
+    }
 
     public void printList() {
         for(Node iter=this.head; iter != null; iter=iter.next)
