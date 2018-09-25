@@ -76,11 +76,11 @@ public class SumLists extends LinkedList{
 		list2.insertNodes(8);
 		list2.printList();
 		
-		System.out.println("");
+		System.out.println();
 		System.out.println("add result : ");        
         SumLists.add(list1, list2).printList();
         
-        System.out.println("");
+        System.out.println();
         System.out.println("add2 result : ");
         SumLists.add2(list1, list2).printList();
 	}	
