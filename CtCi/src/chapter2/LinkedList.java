@@ -33,9 +33,24 @@ public class LinkedList {
 		this.head = head;
 	}
 
-    public void appendToTail(int val) {
+    public void appendNodeToTail(Node node) {
         Node lastNode = this.head;
 
+        if (lastNode == null) {
+            this.head = node;
+            return;
+        }
+
+        while (lastNode.next != null)
+            lastNode = lastNode.next;
+
+        lastNode.next = node;
+        return;
+    }
+
+
+    public void appendToTail(int val) {
+        Node lastNode = this.head;
 
         if (lastNode == null) {
             this.head = new Node(val);
@@ -50,9 +65,9 @@ public class LinkedList {
     }
     
     public void appendToHead(int val) {
-        Node headBak = this.head;
+        Node tmp = this.head;
         this.head = new Node(val);
-        this.head.next = headBak;
+        this.head.next = tmp;
         
         return;
     }

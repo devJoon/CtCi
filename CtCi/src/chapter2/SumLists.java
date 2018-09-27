@@ -1,6 +1,6 @@
 package chapter2;
 
-public class SumLists extends LinkedList{
+public class SumLists {
 
 	/* SumLists */
 	public static LinkedList add(LinkedList l1, LinkedList l2) {
