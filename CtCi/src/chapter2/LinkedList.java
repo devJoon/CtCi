@@ -72,6 +72,19 @@ public class LinkedList {
         return;
     }
 
+    public Node getLastNode() {
+        Node lastNode = this.head;
+
+        if (lastNode == null) {
+            return null;
+        }
+
+        while (lastNode.next != null)
+            lastNode = lastNode.next;
+
+        return lastNode;
+    }
+
     public void printList() {
         for(Node iter=this.head; iter != null; iter=iter.next)
             System.out.print(iter.data + " ");
