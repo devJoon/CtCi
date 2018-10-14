@@ -89,7 +89,7 @@ public class LinkedList {
         for(Node iter=this.head; iter != null; iter=iter.next)
             System.out.print(iter.data + " ");
         
-        System.out.println("");
+        System.out.println();
         
     }
 

@@ -18,6 +18,9 @@ public class LoopDetection {
         return null;
     }
 
+    /* There is a solution using two pointer.
+     * One moving at a rate of 2, while the other one at a rate of 1. */
+
     public static void main(String[] args) {
 
         LinkedList list = new LinkedList();
