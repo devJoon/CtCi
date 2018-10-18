@@ -38,7 +38,7 @@ public class MyQueue<T> {
     }
 
     public T peek() {
-        if (first = null) throw new NoSuchElementException();
+        if (first == null) throw new NoSuchElementException();
         return first.data;
     }
 
