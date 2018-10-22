@@ -40,4 +40,11 @@ public class MyStack<T> {
     public boolean isEmpty() {
         return top == null;
     }
+    
+    public void print() {
+    	for (StackNode<T> n = this.top; n != null; n = n.next) {
+    		System.out.print(n.data + " ");    		
+    	}
+    	System.out.println();
+    }
 }
