@@ -1,6 +1,6 @@
 package chapter3;
 
-/* Implement queue by using two stacks */
+/* Implement queue by using two stacks. */
 public class QueueviaStacks<T> {
 	private MyStack<T> main;
 	private MyStack<T> temp;

@@ -118,6 +118,6 @@ public class StackofPlates {
         sp.pop();sp.pop();sp.pop(); /*sp.pop();*/
     	
     	sp.print();
-    }
+    } 
     
 }
