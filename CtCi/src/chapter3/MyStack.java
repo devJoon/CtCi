@@ -15,7 +15,11 @@ public class MyStack<T> {
 
     private StackNode<T> top;
 
-    public T pop() {
+    public StackNode<T> getTop() {
+		return top;
+	}
+
+	public T pop() {
         if (top == null) throw new EmptyStackException();
         T item = top.data;
         top = top.next;
