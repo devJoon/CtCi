@@ -1,9 +1,14 @@
 package chapter3;
 
+import java.util.Random;
 
 public class SortStack {
 	
 	private MyStack<Integer> stack;
+
+	public MyStack<Integer> getStack() {
+		return stack;
+	}
 
 	public SortStack() {
 		stack = new MyStack();	
@@ -19,36 +24,84 @@ public class SortStack {
 		sorted = new MyStack<>();
 		
 		while (stack.isEmpty() != true) {			
-			while( sorted.isEmpty() || (stack.peek() < sorted.peek()) ) {
+			while( sorted.isEmpty() || (stack.peek() <= sorted.peek()) ) {
 				sorted.push(stack.pop());
+				
+				
+				/*System.out.print("stack : ");
+				stack.print();
+				
+				System.out.print("temp : ");
+				tmp.print();
+				
+				System.out.print("sorted : ");
+				sorted.print();*/
+				
+				
+				if (stack.isEmpty()) {
+					break;
+				}				
+			}
+			
+			if (stack.isEmpty()) {
+				break;
 			}
 			
 			tmp.push(stack.pop());
 			
+			
+			/*System.out.print("stack : ");
+			stack.print();
+			
+			System.out.print("temp : ");
+			tmp.print();
+			
+			System.out.print("sorted : ");
+			sorted.print();*/
+			
+			
 			while (sorted.isEmpty() != true) {
 				stack.push(sorted.pop());
+				
+				/*System.out.print("stack : ");
+				stack.print();
+				
+				System.out.print("temp : ");
+				tmp.print();
+				
+				System.out.print("sorted : ");
+				sorted.print();*/
 			}
 			
 			sorted.push(tmp.pop());
 			
+			/*System.out.print("stack : ");
 			stack.print();
-			tmp.print();
-			sorted.print();
 			
-		}				
+			System.out.print("temp : ");
+			tmp.print();
+			
+			System.out.print("sorted : ");
+			sorted.print();*/
+			
+		}
+						
+		stack = sorted;				
 	}
 	
 
 	public static void main(String[] args) {
 		SortStack sstack = new SortStack();
-		sstack.stack.push(4);
-		sstack.stack.push(2);
-		sstack.stack.push(3);
-		sstack.stack.push(1);
-		sstack.stack.push(9);
-		sstack.stack.push(7);
 		
-		sstack.sort();
+		Random rnd = new Random();
+		int stackSize = 10;
+		
+		for(int i=0; i<stackSize; i++) {
+			sstack.getStack().push(rnd.nextInt(50));
+		}
+		sstack.stack.print();
+		sstack.sort();	
+		sstack.stack.print();
 
 	}
 
