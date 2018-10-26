@@ -11,33 +11,21 @@ public class SortStack {
 	}
 
 	public SortStack() {
-		stack = new MyStack();	
+		stack = new MyStack();
 	}
 	
 	/* Sort the stack. Minimum element goes top. */
 	public void sort() {
 
-		MyStack<Integer> tmp;
+		int tmp;
 		MyStack<Integer> sorted;
-		
-		tmp = new MyStack<>();
+				
 		sorted = new MyStack<>();
 		
 		while (stack.isEmpty() != true) {			
 			while( sorted.isEmpty() || (stack.peek() <= sorted.peek()) ) {
 				sorted.push(stack.pop());
-				
-				
-				/*System.out.print("stack : ");
-				stack.print();
-				
-				System.out.print("temp : ");
-				tmp.print();
-				
-				System.out.print("sorted : ");
-				sorted.print();*/
-				
-				
+									
 				if (stack.isEmpty()) {
 					break;
 				}				
@@ -47,44 +35,15 @@ public class SortStack {
 				break;
 			}
 			
-			tmp.push(stack.pop());
+			tmp = stack.pop();
 			
-			
-			/*System.out.print("stack : ");
-			stack.print();
-			
-			System.out.print("temp : ");
-			tmp.print();
-			
-			System.out.print("sorted : ");
-			sorted.print();*/
-			
-			
+			/* Can be improved to fit tmp into location at this stage.*/
 			while (sorted.isEmpty() != true) {
-				stack.push(sorted.pop());
-				
-				/*System.out.print("stack : ");
-				stack.print();
-				
-				System.out.print("temp : ");
-				tmp.print();
-				
-				System.out.print("sorted : ");
-				sorted.print();*/
+				stack.push(sorted.pop());				
 			}
 			
-			sorted.push(tmp.pop());
-			
-			/*System.out.print("stack : ");
-			stack.print();
-			
-			System.out.print("temp : ");
-			tmp.print();
-			
-			System.out.print("sorted : ");
-			sorted.print();*/
-			
-		}
+			sorted.push(tmp);						
+		} /* end of outer while */ 
 						
 		stack = sorted;				
 	}

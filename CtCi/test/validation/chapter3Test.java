@@ -20,7 +20,7 @@ public class chapter3Test {
 		/* Define stack size */
 		int stackSize = 30;
 		
-		/* Fill stack */
+		/* Fill stack  */
 		for(int i=0; i<stackSize; i++) {
 			sstack.getStack().push(rnd.nextInt(50));
 		}
