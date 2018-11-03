@@ -1,7 +1,9 @@
 package chapter4;
 
+import java.util.Random;
+
 public class BinarySearchTree {
-	private static class Node {
+	public static class Node {
 		int value;
 		Node left;
 		Node right;
@@ -15,7 +17,8 @@ public class BinarySearchTree {
 	
 	private Node root;
 	private int height;
-	
+
+	public Node getRoot() { return root; }
 	public int getHeight() {
 		return height;
 	}
@@ -121,6 +124,14 @@ public class BinarySearchTree {
 		if (n.right != null)
 			print(n.right);
 		return;
+	}
+
+	public void build(int n, int bound) {
+		Random rand = new Random();
+
+		for(int i=0; i<n; i++) {
+			insert(rand.nextInt(bound));
+		}
 	}
 	
 	public static void main(String[] args) {

@@ -6,7 +6,11 @@ import java.util.Random;
 public class MinimalTree {
 	private BinarySearchTree bst;
 	private int arr[];
-	
+
+	public BinarySearchTree getBst() {
+		return bst;
+	}
+
 	/* fill the array. Elements are sorted in ascending order. */
 	public void fill(int n) {
 		arr = new int[n];
