@@ -128,6 +128,8 @@ public class BinarySearchTree {
 
 	public void build(int n, int bound) {
 		Random rand = new Random();
+		
+		this.root = null; // clear tree
 
 		for(int i=0; i<n; i++) {
 			insert(rand.nextInt(bound));
