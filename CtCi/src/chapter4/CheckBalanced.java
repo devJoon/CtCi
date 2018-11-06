@@ -27,7 +27,7 @@ public class CheckBalanced {
 			if ( Math.abs(calcHeight(n.left) - calcHeight(n.right)) > 1)
 				return false;
 			else
-				return true;
+				return isBalanced(n.left) && isBalanced(n.right);
 		}
 	}
 	
