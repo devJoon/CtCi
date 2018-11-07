@@ -4,11 +4,13 @@ import java.util.Random;
 
 public class BinarySearchTree {
 	public static class Node {
+		Node parent;
 		int value;
 		Node left;
 		Node right;
 		
 		public Node(int val) {
+			parent = null;
 			value = val;
 			left = null;
 			right = null;
@@ -27,57 +29,12 @@ public class BinarySearchTree {
 		root = null;
 		height = 0;
 	}
-	
-	public void insert(Node n) {
 		
-		if (root == null) {
-			root = n;
-			height = 1;
-		}
-		else {
-			Node cur = root;
-			int h = 1;
-			while(true) {
-				h++;
-				if (n.value < cur.value) {
-					// insert to left
-					if (cur.left == null) {
-						cur.left = n;
-						break;
-					}
-					
-					cur = cur.left;
-				}
-				else {
-					// insert to right
-					if (cur.right == null) {
-						cur.right = n;
-						break;
-					}
-					
-					cur = cur.right;
-				}
-			}
-			
-			if (h > height)
-				height = h;
-		}
+	public Node insert(int n) {
 		
-		System.out.println("height : " + height);
+		Node node = new Node(n);
 		
-				
-		return;
-		
-		/*if (root == null)
-			System.out.println("root is null");
-		
-		Node cur;
-		for(cur = root; cur != null; cur = (n.value < cur.value) ? cur.left : cur.right);
-		cur = n;
-		return;*/
-	}
-	
-	public void insert(int n) {
+		System.out.print(n + " ");
 
 		if (root == null) {
 			root = new Node(n);
@@ -91,7 +48,8 @@ public class BinarySearchTree {
 				if (n < cur.value) {
 					// insert to left
 					if (cur.left == null) {
-						cur.left = new Node(n);
+						cur.left = node;
+						cur.left.parent = cur;
 						break;
 					}
 
@@ -100,7 +58,8 @@ public class BinarySearchTree {
 				else {
 					// insert to right
 					if (cur.right == null) {
-						cur.right = new Node(n);
+						cur.right = node;
+						cur.right.parent = cur;
 						break;
 					}
 
@@ -114,7 +73,7 @@ public class BinarySearchTree {
 		/*System.out.println("inserted value " + n);
 		System.out.println("height : " + height);*/
 
-		return;
+		return node;
 	}
 	
 	public void print(Node n) {
