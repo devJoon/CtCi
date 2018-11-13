@@ -10,13 +10,18 @@ public class Successor {
 	 */
 	public static Node getNext(Node node) {		
 		Node n;
-		// node has right child - go down
+		
+		
+		if (node == null)
+			return null;
+		
+		// node has right child - find the leftmost node of the right subtree.
 		if (node.right != null) {
 			for(n=node.right; n.left!=null; n=n.left);
 			
 			return n;
 		} 
-		// node doesn't have right child - go up
+		// node doesn't have right child - go up until current node is left child of its parent.
 		else
 		{			
 			for (n=node; n.parent!=null; n=n.parent) {
