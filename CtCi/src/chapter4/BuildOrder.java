@@ -1,6 +1,7 @@
 package chapter4;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class BuildOrder {
 	
@@ -28,7 +29,13 @@ public class BuildOrder {
 				System.out.println("Node with a value " + val + " is not in the graph.");
 				return false;
 			}
-			// TODO : implement code to unlink neighbors and delete node
+			
+			Iterator<String> it = graph.get(val).neighbors.iterator();
+			while(it.hasNext()){
+				//System.out.println(it.next());
+				graph.get(it.next()).decInbound();
+			}
+			graph.remove(val);
 			return true;
 		}
 		
