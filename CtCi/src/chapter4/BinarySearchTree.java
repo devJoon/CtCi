@@ -1,5 +1,6 @@
 package chapter4;
 
+import java.util.HashSet;
 import java.util.Random;
 
 public class BinarySearchTree {
@@ -28,6 +29,50 @@ public class BinarySearchTree {
 	public BinarySearchTree() {
 		root = null;
 		height = 0;
+	}
+	
+	public Node getRandomNode(Node n) {
+		
+		if (n==null)
+			return null;
+		else {
+			Random rnd = new Random();
+			if (rnd.nextInt(4) == 0) {
+				return n;
+			}
+			else if (n.left == null && n.right == null) {
+				return n;
+			}
+			else {
+				Node t = (n.left == null)?n.right:n.left;
+				return getRandomNode(t);
+			}
+		}		
+	}
+	
+	public Node getRandomNode2(Node n) {
+		
+		if (n==null)
+			return null;
+		
+		Node tmp = n;
+		while (tmp.left != null || tmp.right != null ) {
+			
+			Random rnd = new Random();
+			int rndInt = rnd.nextInt(5);
+			System.out.println("rndInt : " + rndInt);
+					
+			if (rndInt == 0)		
+				break;
+			else if (rndInt == 1 && tmp.left != null) {
+				tmp = tmp.left;
+			}
+			else if (rndInt == 2 && tmp.right != null) {
+				tmp = tmp.right;
+			}
+		}
+		
+		return tmp;		
 	}
 		
 	public Node insert(int n) {
@@ -85,14 +130,27 @@ public class BinarySearchTree {
 		return;
 	}
 
+	// build binary search tree without duplicate node value.
 	public void build(int n, int bound) {
 		Random rand = new Random();
 		
 		this.root = null; // clear tree
-
-		for(int i=0; i<n; i++) {
-			insert(rand.nextInt(bound));
+		
+		if (n > bound) {
+			return;
 		}
+		
+		HashSet<Integer> pick = new HashSet<>();
+		
+		for(int chosen = 0; chosen<=n;) {
+			int num = rand.nextInt(bound);
+			if (!pick.contains(num)) {
+				insert(num);
+				pick.add(num);
+				chosen++;
+			}			
+		}
+		
 	}
 	
 	public static void main(String[] args) {
