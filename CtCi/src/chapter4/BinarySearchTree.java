@@ -11,11 +11,9 @@ public class BinarySearchTree {
 		Node right;
 		
 		public Node(int val) {
-			parent = null;
 			value = val;
-			left = null;
-			right = null;
 		}
+
 	}
 	
 	private Node root;
@@ -30,27 +28,8 @@ public class BinarySearchTree {
 		root = null;
 		height = 0;
 	}
-	
+
 	public Node getRandomNode(Node n) {
-		
-		if (n==null)
-			return null;
-		else {
-			Random rnd = new Random();
-			if (rnd.nextInt(4) == 0) {
-				return n;
-			}
-			else if (n.left == null && n.right == null) {
-				return n;
-			}
-			else {
-				Node t = (n.left == null)?n.right:n.left;
-				return getRandomNode(t);
-			}
-		}		
-	}
-	
-	public Node getRandomNode2(Node n) {
 		
 		if (n==null)
 			return null;
@@ -60,14 +39,14 @@ public class BinarySearchTree {
 			
 			Random rnd = new Random();
 			int rndInt = rnd.nextInt(5);
-			System.out.println("rndInt : " + rndInt);
+			// System.out.println("rndInt : " + rndInt);
 					
 			if (rndInt == 0)		
 				break;
-			else if (rndInt == 1 && tmp.left != null) {
+			else if (rndInt < 3 && tmp.left != null) {
 				tmp = tmp.left;
 			}
-			else if (rndInt == 2 && tmp.right != null) {
+			else if (rndInt < 5 && tmp.right != null) {
 				tmp = tmp.right;
 			}
 		}
