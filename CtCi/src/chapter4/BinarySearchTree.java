@@ -121,7 +121,7 @@ public class BinarySearchTree {
 		
 		HashSet<Integer> pick = new HashSet<>();
 		
-		for(int chosen = 0; chosen<=n;) {
+		for(int chosen = 0; chosen<n;) {
 			int num = rand.nextInt(bound);
 			if (!pick.contains(num)) {
 				insert(num);
