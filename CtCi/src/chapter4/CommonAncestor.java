@@ -45,8 +45,8 @@ public class CommonAncestor {
 		bst.build(20, 40);
 		System.out.println();
 
-		Node a = bst.getRandomNode(bst.getRoot());
-		Node b = bst.getRandomNode(bst.getRoot());
+		Node a = bst.getPseudoRandomNode();
+		Node b = bst.getPseudoRandomNode();
 						
 		System.out.println("first node to find : " + a.value);
 		System.out.println("second node to find : " + b.value);

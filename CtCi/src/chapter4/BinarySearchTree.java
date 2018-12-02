@@ -1,6 +1,8 @@
 package chapter4;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 public class BinarySearchTree {
@@ -18,23 +20,26 @@ public class BinarySearchTree {
 	
 	private Node root;
 	private int height;
+	private int nodeNo;
 
 	public Node getRoot() { return root; }
 	public int getHeight() {
 		return height;
 	}
+	public int getNodeNo() { return nodeNo; }
 
 	public BinarySearchTree() {
 		root = null;
 		height = 0;
 	}
 
-	public Node getRandomNode(Node n) {
+	/* Not completely random, just used for tests. */
+	public Node getPseudoRandomNode() {
 		
-		if (n==null)
+		if (getRoot()==null)
 			return null;
 		
-		Node tmp = n;
+		Node tmp = getRoot();
 		while (tmp.left != null || tmp.right != null ) {
 			
 			Random rnd = new Random();
@@ -53,6 +58,37 @@ public class BinarySearchTree {
 		
 		return tmp;		
 	}
+
+	/* Possibly return a random node from the tree.  */
+	public Node getRandomNode() {
+
+		if (getRoot() == null)
+			return null;
+
+		Queue<Node> queue = new LinkedList<>();
+
+		queue.offer(getRoot());
+		int denom = getNodeNo();
+		Random rng = new Random();
+
+		while(!queue.isEmpty()) {
+			Node n = queue.poll();
+			// picked
+			if (rng.nextInt(denom--) == 0) {
+				// System.out.println("Picked node with value " + n.value);
+				return n;
+			}
+
+			if (n.left != null)
+				queue.offer(n.left);
+			if (n.right != null)
+				queue.offer(n.right);
+		}
+
+		System.out.println("Something is WRONG!! ");
+		return null;
+	}
+
 		
 	public Node insert(int n) {
 		
@@ -97,6 +133,7 @@ public class BinarySearchTree {
 		/*System.out.println("inserted value " + n);
 		System.out.println("height : " + height);*/
 
+		nodeNo++;
 		return node;
 	}
 	
