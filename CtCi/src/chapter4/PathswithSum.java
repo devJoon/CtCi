@@ -1,6 +1,7 @@
 package chapter4;
 import chapter4.BinarySearchTree.*;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -46,6 +47,47 @@ public class PathswithSum {
         return cnt;
     }
 
+    /* Solution */
+    public static int countPathsWithSum(Node root, int targetSum) {
+        return countPathsWithSum(root, targetSum, 0, new HashMap<Integer,Integer>());
+    }
+
+    private static int countPathsWithSum(Node node, int targetSum, int runningSum, HashMap<Integer, Integer> pathCount) {
+
+        if (node == null)
+            return 0; // Base case
+
+        /* Count paths with sum ending at the current node. */
+        runningSum += node.value;
+        int sum = runningSum - targetSum;
+        int totalPaths = pathCount.getOrDefault(sum, 0);
+
+        /* If runningSum equals targetSum, then one additional path starts at root.
+         * Add in this path.
+         */
+        if (runningSum == targetSum) {
+            totalPaths++;
+        }
+
+        /* Increment pathCount, recurse, then decrement pathCount. */
+        incrementHashTable(pathCount, runningSum, 1); // Increment pathCount
+        totalPaths += countPathsWithSum(node.left, targetSum, runningSum, pathCount);
+        totalPaths += countPathsWithSum(node.right, targetSum, runningSum, pathCount);
+        incrementHashTable(pathCount, runningSum, -1); // Decrement pathCount
+
+        return totalPaths;
+    }
+
+    private static void incrementHashTable(HashMap<Integer, Integer> hashTable, int key, int delta) {
+        int newCount = hashTable.getOrDefault(key, 0) + delta;
+        if (newCount == 0) { // Remove when zero to reduce space usage
+            hashTable.remove(key);
+        } else {
+            hashTable.put(key, newCount);
+        }
+    }
+
+
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
 
@@ -57,7 +99,12 @@ public class PathswithSum {
         bst.build(10, 10);
         System.out.println();
 
+        /* Brute Force */
         int cnt = PathswithSum.countPath(bst.getRoot(), 16);
+        System.out.println(cnt);
+
+        /* Optimized */
+        cnt = PathswithSum.countPathsWithSum(bst.getRoot(), 16);
         System.out.println(cnt);
 
     }
